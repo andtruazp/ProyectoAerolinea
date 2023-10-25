@@ -1,0 +1,95 @@
+<!--<p>agrega-vuelos works!</p>-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Ingreso de Datos de Vuelos</title>
+    <!-- Agrega el enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Ingresar Datos de Vuelo</h1>
+        <form>
+            <div class="form-group">
+                <label for="nombreVuelo">Nombre del Vuelo</label>
+                <input type="text" class="form-control" id="nombreVuelo" placeholder="Nombre del vuelo">
+            </div>
+            <div class="form-group">
+                <label for="origen">Origen</label>
+                <input type="text" class="form-control" id="origen" placeholder="Ciudad de origen">
+            </div>
+            <div class="form-group">
+                <label for="destino">Destino</label>
+                <input type="text" class= "form-control" id="destino" placeholder="Ciudad de destino">
+            </div>
+            <div class="form-group">
+                <label for="fechaSalida">Fecha de Salida</label>
+                <input type="date" class="form-control" id="fechaSalida">
+            </div>
+            <div class="form-group">
+                <label for="horaSalida">Hora de Salida</label>
+                <input type="time" class="form-control" id="horaSalida">
+            </div>
+            <div class="form-group">
+                <label for="capacidad">Capacidad de Pasajeros</label>
+                <input type="number" class="form-control" id="capacidad" placeholder="Capacidad de pasajeros">
+            </div>
+            <div class="form-group">
+                <label for="capacidad">Tipo de Aeronave</label>
+                <input type="text" class="form-control" id="tipo-avion" placeholder="Tipo de Aeronave">
+            </div>
+            <div class="form-group">
+                <label for="capacidad">Costo Boleto</label>
+                <input type="number" class="form-control" id="costo" placeholder="Costo de un boleto" step="0.01">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    <div class="container mt-5">
+        <h1>Lista de Vuelos</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del Vuelo</th>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <th>Fecha de Salida</th>
+                    <th>Hora de Salida</th>
+                    <th>Capacidad de Pasajeros</th>
+                    <th>Tipo de Aeronave</th>
+                    <th>Costo Boleto</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se agregarán las filas con datos de vuelos -->
+                <tr  *ngFor="let vuelo of vuelos">
+                    <td>{{ vuelo.id_vuelos }}</td>
+                    <td>Vuelo 1</td>
+                    <td>{{ vuelo.origen }}</td>
+                    <td>{{ vuelo.destino}}</td>
+                    <td>{{ vuelo.fecha_vuelos }}</td>
+                    <td>{{ vuelo.hora_salida }}</td>
+                    <td>{{vuelo.asientos_dis}}</td>
+                    <td>{{vuelo.tipo_avion }}</td>
+                    <td>{{vuelo.costo}}</td>
+                    <td>
+                        <button class="btn btn-primary">Editar</button>
+                        <button class="btn btn-danger">Borrar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Agrega el enlace a Bootstrap JS y jQuery (opcional) si es necesario -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
