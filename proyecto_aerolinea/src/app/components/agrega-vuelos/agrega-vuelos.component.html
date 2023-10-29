@@ -11,40 +11,40 @@
 <body>
     <div class="container">
         <h1 class="mt-5">Ingresar Datos de Vuelo</h1>
-        <form>
-            <div class="form-group">
-                <label for="nombreVuelo">Nombre del Vuelo</label>
-                <input type="text" class="form-control" id="nombreVuelo" placeholder="Nombre del vuelo">
-            </div>
+        <form [formGroup]="vuelosForm" (ngSubmit)="createVuelo()">
             <div class="form-group">
                 <label for="origen">Origen</label>
-                <input type="text" class="form-control" id="origen" placeholder="Ciudad de origen">
+                <input type="text" class="form-control" id="origen" placeholder="Ciudad de origen" formControlName="origen">
             </div>
             <div class="form-group">
                 <label for="destino">Destino</label>
-                <input type="text" class= "form-control" id="destino" placeholder="Ciudad de destino">
+                <input type="text" class= "form-control" id="destino" placeholder="Ciudad de destino" formControlName="destino">
             </div>
             <div class="form-group">
                 <label for="fechaSalida">Fecha de Salida</label>
-                <input type="date" class="form-control" id="fechaSalida">
+                <input type="date" class="form-control" id="fechaSalida" formControlName="fecha_vuelos">
             </div>
             <div class="form-group">
                 <label for="horaSalida">Hora de Salida</label>
-                <input type="time" class="form-control" id="horaSalida">
+                <input type="time" class="form-control" id="horaSalida" formControlName="hora_salida">
             </div>
             <div class="form-group">
                 <label for="capacidad">Capacidad de Pasajeros</label>
-                <input type="number" class="form-control" id="capacidad" placeholder="Capacidad de pasajeros">
+                <input type="number" class="form-control" id="capacidad" placeholder="Capacidad de pasajeros"formControlName="asientos_dis">
+            </div>
+            <div class="form-group">
+                <label for="nombreVuelo">Tipo de Servicio</label>
+                <input type="text" class="form-control" id="servicio" placeholder="Servicio" formControlName="id_servicio">
             </div>
             <div class="form-group">
                 <label for="capacidad">Tipo de Aeronave</label>
-                <input type="text" class="form-control" id="tipo-avion" placeholder="Tipo de Aeronave">
+                <input type="text" class="form-control" id="tipo_avion" placeholder="Tipo de Aeronave" formControlName="tipo_avion">
             </div>
             <div class="form-group">
                 <label for="capacidad">Costo Boleto</label>
-                <input type="number" class="form-control" id="costo" placeholder="Costo de un boleto" step="0.01">
+                <input type="number" class="form-control" id="costo" placeholder="Costo de un boleto" step="0.01" formControlName="costo">
             </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" [disabled]="vuelosForm.invalid" class="btn btn-primary">Guardar</button>
         </form>
     </div>
     <br>

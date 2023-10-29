@@ -3,7 +3,7 @@ import {getVuelos, getVuelo, createVuelo, updateVuelo, deleteVuelo} from '../con
 
 const router = Router()
 
-router.get('/vuelos', getVuelos)
+router.get('/vuelos/emp/:id', getVuelos)
 
 router.get('/vuelos/:id', getVuelo)
 

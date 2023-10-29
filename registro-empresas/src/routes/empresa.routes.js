@@ -1,8 +1,10 @@
 import { Router } from 'express'
-import {getEmpresa, updateEmpresa, bajaEmpresa, deleteEmpresa, newEmpresa, altaEmpresa} from '../controller/empresa.controller.js'
+import {getEmpresa, updateEmpresa, bajaEmpresa, deleteEmpresa, newEmpresa, altaEmpresa, getIdEmp} from '../controller/empresa.controller.js'
 
 const router = Router()
  router.get('/empresa/:id', getEmpresa)
+
+ router.get('/empresa/idu/:id',getIdEmp)
 
  router.post('/empresa/new', newEmpresa)
 
@@ -10,7 +12,7 @@ const router = Router()
 
  router.put('/empresa/baja/:id',bajaEmpresa)
 
- router.put('/empresa/alta/:id',altaEmpresa)
+ //router.put('/empresa/alta/:id',altaEmpresa)
 
  router.delete('/empresa/delete/:id',deleteEmpresa)
 

@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Empresa } from './../../models/agrega-empresa';
+import { Component, OnInit } from '@angular/core';
+import { EmpresaService } from './../../service/empresa.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +11,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
+  
+  
 }

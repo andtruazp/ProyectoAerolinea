@@ -4,7 +4,7 @@ export const getVuelos = async (req, res) =>{
     /*const[rows, fields]=await pool.query('SELECT * FROM calendario_vuelos')
     res.json(rows)*/
     try {
-        const [rows, fields] = await pool.query('SELECT * FROM calendario_vuelos');
+        const [rows, fields] = await pool.query('SELECT * FROM calendario_vuelos WHERE id_empresa=?',[req.params.id]);
         res.json(rows);
       } catch (error) {
         console.error('Error al obtener datos de vuelos:', error);
