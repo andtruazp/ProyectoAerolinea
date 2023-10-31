@@ -9,39 +9,54 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container p-5 my-5 border">
         <h1 class="mt-5">Ingresar Datos de Vuelo</h1>
         <form [formGroup]="vuelosForm" (ngSubmit)="createVuelo()">
             <div class="form-group">
                 <label for="origen">Origen</label>
-                <input type="text" class="form-control" id="origen" placeholder="Ciudad de origen" formControlName="origen">
+                <!--<input type="text" class="form-control" id="origen" placeholder="Ciudad de origen" formControlName="origen">-->
+                <select class="form-control" id="origen" formControlName="origen">
+                    <option value="" disabled>Selecciona el origen</option>
+                    <option *ngFor="let origen of origenOptions" [value]="origen.nombre">{{origen.nombre}}</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="destino">Destino</label>
-                <input type="text" class= "form-control" id="destino" placeholder="Ciudad de destino" formControlName="destino">
+                <!--<input type="text" class= "form-control" id="destino" placeholder="Ciudad de destino" formControlName="destino">-->
+                <select class="form-control" id="destino" formControlName="destino">
+                    <option value="" disabled>Selecciona el destino</option>
+                    <option *ngFor="let destino of origenOptions" [value]="destino.nombre">{{destino.nombre}}</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="fechaSalida">Fecha de Salida</label>
-                <input type="date" class="form-control" id="fechaSalida" formControlName="fecha_vuelos">
+                <label for="fecha_vuelos">Fecha de Salida</label>
+                <input type="date" class="form-control" id="fecha_vuelos" formControlName="fecha_vuelos" >
+                <div *ngIf="vuelosForm!.get('fecha_vuelos')!.hasError('fechaInvalida')">
+                    La fecha ingresada no puede ser anterior a la fecha actual.
+                  </div>
             </div>
             <div class="form-group">
-                <label for="horaSalida">Hora de Salida</label>
-                <input type="time" class="form-control" id="horaSalida" formControlName="hora_salida">
+                <label for="hora_salida">Hora de Salida</label>
+                <input type="time" class="form-control" id="hora_salida" formControlName="hora_salida">
             </div>
             <div class="form-group">
-                <label for="capacidad">Capacidad de Pasajeros</label>
-                <input type="number" class="form-control" id="capacidad" placeholder="Capacidad de pasajeros"formControlName="asientos_dis">
+                <label for="asientos_dis">Capacidad de Pasajeros</label>
+                <input type="number" class="form-control" id="asientos_dis" placeholder="Capacidad de pasajeros"formControlName="asientos_dis">
             </div>
             <div class="form-group">
-                <label for="nombreVuelo">Tipo de Servicio</label>
-                <input type="text" class="form-control" id="servicio" placeholder="Servicio" formControlName="id_servicio">
+                <label for="servicio">Tipo de Servicio</label>
+                <!--<input type="text" class="form-control" id="servicio" placeholder="Servicio" formControlName="id_servicio">-->
+                <select class="form-control" id="servicio" formControlName="id_servicio">
+                    <option value="" disabled>Selecciona el tipo de servicio</option>
+                    <option *ngFor="let servicio of servicioOptions" [value]="servicio.id_servicio">{{servicio.nombre}}</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="capacidad">Tipo de Aeronave</label>
+                <label for="tipo_avion">Tipo de Aeronave</label>
                 <input type="text" class="form-control" id="tipo_avion" placeholder="Tipo de Aeronave" formControlName="tipo_avion">
             </div>
             <div class="form-group">
-                <label for="capacidad">Costo Boleto</label>
+                <label for="costo">Costo Boleto</label>
                 <input type="number" class="form-control" id="costo" placeholder="Costo de un boleto" step="0.01" formControlName="costo">
             </div>
             <button type="submit" [disabled]="vuelosForm.invalid" class="btn btn-primary">Guardar</button>
@@ -55,7 +70,6 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nombre del Vuelo</th>
                     <th>Origen</th>
                     <th>Destino</th>
                     <th>Fecha de Salida</th>
@@ -70,17 +84,19 @@
                 <!-- Aquí se agregarán las filas con datos de vuelos -->
                 <tr  *ngFor="let vuelo of vuelos">
                     <td>{{ vuelo.id_vuelos }}</td>
-                    <td>Vuelo 1</td>
                     <td>{{ vuelo.origen }}</td>
                     <td>{{ vuelo.destino}}</td>
-                    <td>{{ vuelo.fecha_vuelos }}</td>
+                    <td>{{ vuelo.fecha_vuelos | date:'dd/MM/yyyy'}} </td>
                     <td>{{ vuelo.hora_salida }}</td>
                     <td>{{vuelo.asientos_dis}}</td>
                     <td>{{vuelo.tipo_avion }}</td>
                     <td>{{vuelo.costo}}</td>
                     <td>
-                        <button class="btn btn-primary">Editar</button>
-                        <button class="btn btn-danger">Borrar</button>
+                        <div class="btn-group">
+                            <button class="btn btn-outline-primary btn-sm" [routerLink]="['',vuelo.id_vuelos]" (click)="openForEdit(vuelo)">Editar</button>
+                            <button class="btn btn-dark btn-sm" (click)="eliminarVuelo(vuelo.id_vuelos)">Borrar</button>
+                        </div>
+                        
                     </td>
                 </tr>
             </tbody>

@@ -6,11 +6,11 @@ export class Vuelos{
     destino: string;
     hora_salida: string;
     asientos_dis: number;
-    fecha_vuelos: Date;
+    fecha_vuelos: string;
     tipo_avion: string;
     costo: number;
 
-    constructor(id_vuelos: number,id_empresa:number, id_servicio: number, origen: string, destino: string, hora_salida: string, asientos_dis: number, fecha_vuelos: Date, tipo_avion: string, costo: number){
+    constructor(id_vuelos: number,id_empresa:number, id_servicio: number, origen: string, destino: string, hora_salida: string, asientos_dis: number, fecha_vuelos: string, tipo_avion: string, costo: number){
         this.id_vuelos = id_vuelos,
         this.id_empresa = id_empresa,
 	    this.id_servicio = id_servicio,

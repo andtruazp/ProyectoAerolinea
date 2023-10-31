@@ -9,7 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'empresas', component: AgregaEmpresaComponent},
-  {path:'empresas/:id', component: AgregaEmpresaComponent},
+  {path:':id', component: AgregaVuelosComponent},
   {path: 'vuelos', component: AgregaVuelosComponent},
   {path: 'home', component: HomeComponent}
 
