@@ -32,10 +32,10 @@ export class ServicioService {
         servicioFactory = new BasicoFactory();
         break;
       case 'plus':
-        servicioFactory = new PlusFactory(); // Asegúrate de crear la fábrica específica
+        servicioFactory = new PlusFactory();
         break;
       case 'premium':
-        servicioFactory = new PremiumFactory(); // Asegúrate de crear la fábrica específica
+        servicioFactory = new PremiumFactory();
         break;
       default:
         throw new Error('Tipo de servicio no válido');
@@ -54,32 +54,4 @@ export class ServicioService {
     );
   }
 
-  /*agregarServicio(nuevoServicio: any): Observable<any> {
-    return this.http.post<any>(this.url, nuevoServicio).pipe(
-      map((servicioData: any) => {
-        const servicio = this.servicioFactory.createServicio(
-          servicioData.tipo,
-          servicioData.nombre,
-          servicioData.descripcion,
-          servicioData.costo,
-          servicioData.extra
-        );
-        return servicio;
-      })
-    );
-  }*/
-
-  /*agregarServicioConInstancias(nuevoServicio: any): Observable<Servicio> {
-    return this.http.post<any>(this.url, nuevoServicio).pipe(
-      map((servicioData: any) =>
-        this.servicioFactory.createServicio(
-          servicioData.tipo,
-          servicioData.nombre,
-          servicioData.descripcion,
-          servicioData.costo,
-          servicioData.extra
-        )
-      )
-    );
-  }*/
 }

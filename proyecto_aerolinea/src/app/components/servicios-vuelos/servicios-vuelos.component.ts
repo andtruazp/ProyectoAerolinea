@@ -70,22 +70,13 @@ export class ServiciosVuelosComponent implements OnInit{
       ).subscribe(
         (servicio: IServicio) => {
           console.log('Servicio agregado exitosamente', servicio);
-          // Realizar cualquier acción adicional después de agregar el servicio
         }
       );
+
+      window.location.reload();
     }
   }
 
-  /*private crearInstanciaServicio(servicioData: any): IServicio {
-    const servicioFactory = new ServicioFactory();
-    return servicioFactory.createServicio(
-      servicioData.tipo,
-      servicioData.nombre,
-      servicioData.descripcion,
-      servicioData.costo,
-      servicioData.extra
-    );
-  }*/
   private crearInstanciaServicio(servicioData: any): IServicio {
     let servicioFactory;
     switch (servicioData.tipo) {
@@ -93,10 +84,10 @@ export class ServiciosVuelosComponent implements OnInit{
         servicioFactory = new BasicoFactory();
         break;
       case 'plus':
-        servicioFactory = new PlusFactory(); // Asegúrate de crear la fábrica específica
+        servicioFactory = new PlusFactory();
         break;
       case 'premium':
-        servicioFactory = new PremiumFactory(); // Asegúrate de crear la fábrica específica
+        servicioFactory = new PremiumFactory();
         break;
       default:
         throw new Error('Tipo de servicio no válido');

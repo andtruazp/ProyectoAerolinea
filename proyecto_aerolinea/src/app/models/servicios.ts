@@ -65,24 +65,6 @@ export interface IServicio {
       return { nombre: this.nombre, descripcion: this.descripcion, costo: this.costo, extra: this.extra };
     }
   }
-
-  /*export class ServicioFactory {
-    createServicio(tipo: string, nombre: string, descripcion: string, costo: number, extra: string): IServicio {
-      if (!tipo) {
-        throw new Error('Tipo de servicio no proporcionado');
-      }
-      switch (tipo) {
-        case 'basico':
-          return new Basico(tipo, nombre, descripcion);
-        case 'plus':
-          return new Plus(tipo, nombre, descripcion, costo);
-        case 'premium':
-          return new Premium(tipo, nombre, descripcion, costo, extra);
-        default:
-          throw new Error('Tipo de servicio no válido');
-      }
-    }
-  }*/
   export abstract class ServicioFactory {
     abstract createServicio(nombre: string, descripcion: string, costo?: number, extra?: string): IServicio;
   }
