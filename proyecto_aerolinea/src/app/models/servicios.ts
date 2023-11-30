@@ -66,7 +66,7 @@ export interface IServicio {
     }
   }
 
-  export class ServicioFactory {
+  /*export class ServicioFactory {
     createServicio(tipo: string, nombre: string, descripcion: string, costo: number, extra: string): IServicio {
       if (!tipo) {
         throw new Error('Tipo de servicio no proporcionado');
@@ -82,5 +82,26 @@ export interface IServicio {
           throw new Error('Tipo de servicio no válido');
       }
     }
+  }*/
+  export abstract class ServicioFactory {
+    abstract createServicio(nombre: string, descripcion: string, costo?: number, extra?: string): IServicio;
   }
+  export class BasicoFactory extends ServicioFactory {
+    createServicio(nombre: string, descripcion: string): IServicio {
+      return new Basico('basico', nombre, descripcion);
+    }
+  }
+  
+  export class PlusFactory extends ServicioFactory {
+    createServicio(nombre: string, descripcion: string, costo: number): IServicio {
+      return new Plus('plus', nombre, descripcion, costo);
+    }
+  }
+  
+  export class PremiumFactory extends ServicioFactory {
+    createServicio(nombre: string, descripcion: string, costo: number, extra: string): IServicio {
+      return new Premium('premium', nombre, descripcion, costo, extra);
+    }
+  }
+    
   

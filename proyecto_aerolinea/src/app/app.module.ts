@@ -1,3 +1,4 @@
+//import { ServicioFactory } from 'src/app/models/servicios';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiciosVuelosComponent } from './components/servicios-vuelos/servicios-vuelos.component';
-import { ServicioFactory } from './models/servicios';
+import { ServicioFactoriesModule } from './components/servicios-vuelos/servicio-factories.module';
 
 @NgModule({
   declarations: [
@@ -29,10 +30,11 @@ import { ServicioFactory } from './models/servicios';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServicioFactoriesModule,
   ],
   providers: [
-    ServicioFactory
+    //ServicioFactory,
   ],
   bootstrap: [AppComponent]
 })

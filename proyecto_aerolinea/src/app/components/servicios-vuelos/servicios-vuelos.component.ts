@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServicioService } from 'src/app/service/servicio.service';
-import { Servicio, ServicioFactory, IServicio } from 'src/app/models/servicios';
+import { Servicio, ServicioFactory, IServicio, BasicoFactory, PremiumFactory, PlusFactory } from 'src/app/models/servicios';
 import { catchError, map } from 'rxjs/operators';
 
 @Component({
@@ -76,10 +76,33 @@ export class ServiciosVuelosComponent implements OnInit{
     }
   }
 
-  private crearInstanciaServicio(servicioData: any): IServicio {
+  /*private crearInstanciaServicio(servicioData: any): IServicio {
     const servicioFactory = new ServicioFactory();
     return servicioFactory.createServicio(
       servicioData.tipo,
+      servicioData.nombre,
+      servicioData.descripcion,
+      servicioData.costo,
+      servicioData.extra
+    );
+  }*/
+  private crearInstanciaServicio(servicioData: any): IServicio {
+    let servicioFactory;
+    switch (servicioData.tipo) {
+      case 'basico':
+        servicioFactory = new BasicoFactory();
+        break;
+      case 'plus':
+        servicioFactory = new PlusFactory(); // Asegúrate de crear la fábrica específica
+        break;
+      case 'premium':
+        servicioFactory = new PremiumFactory(); // Asegúrate de crear la fábrica específica
+        break;
+      default:
+        throw new Error('Tipo de servicio no válido');
+    }
+  
+    return servicioFactory.createServicio(
       servicioData.nombre,
       servicioData.descripcion,
       servicioData.costo,
