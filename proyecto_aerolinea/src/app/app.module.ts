@@ -11,6 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ServiciosVuelosComponent } from './components/servicios-vuelos/servicios-vuelos.component';
+import { ServicioFactory } from './models/servicios';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AgregaVuelosComponent,
     ReservasComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ServiciosVuelosComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    ServicioFactory
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

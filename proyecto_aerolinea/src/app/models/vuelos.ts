@@ -23,3 +23,4 @@ export class Vuelos{
         this.costo = costo
     }
 }
+
