@@ -8,12 +8,12 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
+  {path: '', component: HomeComponent},
   {path:'login', component: LoginComponent},
   {path:'empresas', component: AgregaEmpresaComponent},
   {path: 'servicios', component: ServiciosVuelosComponent},
   {path: 'vuelos', component: AgregaVuelosComponent},
   {path:':id', component: AgregaVuelosComponent},
-  {path: 'home', component: HomeComponent}
 
 ];
 
