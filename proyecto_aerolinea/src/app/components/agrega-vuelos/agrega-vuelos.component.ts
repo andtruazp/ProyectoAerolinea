@@ -49,7 +49,7 @@ export class AgregaVuelosComponent implements OnInit {
         this.id = +this.aRoute.snapshot.paramMap.get('id');
       }*/
 
-      this.id_us = 1
+      this.id_us = 2
       this.id_emp = 0
     }
 

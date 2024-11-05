@@ -68,7 +68,7 @@ CREATE TABLE `reserva` (
   CONSTRAINT `reserva_ibfk_2` FOREIGN KEY (`id_vuelos`) REFERENCES `calendario_vuelos` (`id_vuelos`)
 ) ;
 
-INSERT INTO `usuario` VALUES (1,'Usuario','1234',0),(2,'Empresa','1234',1),(3,'Empresa2','1234',1),(4,'juan','123',0);
+INSERT INTO `usuario` VALUES (1,'Usuario','1234',0),(2,'Empresa','1234',1),(3,'Empresa2','1234',1);
 
 INSERT INTO `ciudad` VALUES (1,'CDMX'),(2,'Cancun'),(3,'Guadalajara'),(4,'Monterrey'),(5,'Tijuana'),(6,'Puerto Vallarta'),(7,'Merida'),(8,'Los Cabos'),(9,'Toluca'),(10,'Veracruz'),(11,'Acapulco'),(12,'Oaxaca'),(13,'Puebla'),(14,'Queretaro'),(15,'Chihuahua');
 

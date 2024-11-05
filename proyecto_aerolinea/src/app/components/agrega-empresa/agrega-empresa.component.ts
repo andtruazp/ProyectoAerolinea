@@ -30,7 +30,7 @@ export class AgregaEmpresaComponent implements OnInit{
         estatus: [1]
       })
       this.id = Number(this.aRoute.snapshot.paramMap.get('id'));
-      this.id_us = 1
+      this.id_us = 2
     
   }
 
